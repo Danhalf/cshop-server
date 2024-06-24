@@ -1,0 +1,11 @@
+{
+  "name": "cvendor/cshop",
+  "autoload": {
+    "psr-4": {
+      "cvendor\\": "vendor/cvendor",
+      "app\\": "app"
+    }
+  },
+  "require": {
+  }
+}
