@@ -9,6 +9,7 @@ class App
 
     public function __construct()
     {
+        new ErrorHandler();
         self::$app = Registry::getInstance();
         $this->getParams();
     }
@@ -19,12 +20,12 @@ class App
 
         if (file_exists($paramsFile)) {
             $params = require_once $paramsFile;
-            if (!empty($params))
-            {
+            if (!empty($params)) {
                 foreach ($params as $key => $value) {
                     self::$app->setProperty($key, $value);
                 }
             }
+
         }
     }
 }

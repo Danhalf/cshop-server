@@ -2,7 +2,8 @@
 
 define("DEBUG", 1);
 define("ROOT", dirname(__DIR__));
-define("PUBLIC", ROOT . '/public');
+define("PUBLIC_PATH", ROOT . '/public');
+define("ERRORS_PATH", PUBLIC_PATH . '/errors');
 define("APP", ROOT . '/app');
 define("CORE", ROOT . '/vendor/cvendor');
 define("HELPERS", ROOT . '/vendor/cvendor/helpers');

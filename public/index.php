@@ -7,5 +7,23 @@ if (PHP_MAJOR_VERSION < LOWER_PHP_VERSION) {
 }
 
 new \cvendor\App();
-echo \cvendor\App::$app->getProperty('siteName');
-var_dump(\cvendor\App::$app->getProperties());
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="32x32" href="
+    /favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="
+    /favicon/favicon-16x16.png">
+    <title>CShop</title>
+</head>
+<body>
+CONTENT
+
+</body>
+</html>
