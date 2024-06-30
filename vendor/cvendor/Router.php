@@ -23,12 +23,27 @@ class Router
         return self::$route;
     }
 
+    /**
+     * @throws \Exception
+     */
     public static function dispatch($url): void
     {
         if (self::matchRoute($url)) {
-            echo 'OK';
+
+            $controller = 'app\controllers\\' . self::$route[ADMIN_PREFIX] . self::$route[CONTROLLER] . 'Controller';
+            if (class_exists($controller)) {
+                $controllerObject = new $controller(self::$route);
+                $action = self::formatActionName(self::$route[ACTION] . 'Action');
+                if (method_exists($controllerObject, $action)) {
+                    $controllerObject->$action();
+                } else {
+                    throw  new \Exception("Action <b>'{$controller::$action}'</b> not found", 404);
+                }
+            } else {
+                throw new \Exception("Controller <b>'{$controller}'</b> not found", 404);
+            }
         } else {
-            echo 'ERROR';
+            throw new \Exception('Route not found', 404);
         }
     }
 
@@ -48,11 +63,20 @@ class Router
                 if (!isset($route[ADMIN_PREFIX])) {
                     $route[ADMIN_PREFIX] = '';
                 } else {
-                    $route[ADMIN_PREFIX] = '\\';
+                    $route[ADMIN_PREFIX] .= '\\';
                 }
 
-                $route[CONTROLLER] = self::formatControllerName($matches[CONTROLLER]);
-                $route[ACTION] = self::formatActionName($matches[ACTION]);
+                if (!isset($route[CONTROLLER])) {
+                    $route[CONTROLLER] = self::formatControllerName($matches[CONTROLLER]);
+                } else {
+                    $route[CONTROLLER] = self::formatControllerName($route[CONTROLLER]);
+                }
+                if (!isset($route[ACTION])) {
+                    $route[ACTION] = self::formatActionName($matches[ACTION]);
+                } else {
+                    $route[ACTION] = self::formatActionName($route[ACTION]);
+                }
+                self::$route = $route;
                 debug($route);
                 return true;
             }

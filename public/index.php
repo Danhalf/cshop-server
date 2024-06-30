@@ -27,11 +27,9 @@ new \cvendor\App();
     <title>CShop</title>
 </head>
 <body>
-CONTENT
 <?php
 
 debug(\cvendor\Router::getRoutes());
-debug(ADMIN_PREFIX);
 
 ?>
 
