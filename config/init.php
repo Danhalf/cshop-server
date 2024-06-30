@@ -14,6 +14,5 @@ define("LAYOUT", 'cshop');
 define("PATH", 'http://localhost');
 define("ADMIN", 'http://localhost/admin');
 define("NO_IMAGE", 'uploads/no-image.jpg');
-define("LOWER_PHP_VERSION", 8);
 
 require_once ROOT . '/vendor/autoload.php';
