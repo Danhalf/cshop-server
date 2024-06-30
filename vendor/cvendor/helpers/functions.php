@@ -25,10 +25,8 @@ function formatString(string $initialString, string $format = 'PascalCase'): str
        return $initialString;
     }
 
-    // Розбиваємо рядок за обраним розділювачем
     $parts = explode($separator, $initialString);
 
-    // Форматуємо кожну частину
     $formattedParts = array_map('ucfirst', $parts);
 
     switch ($format) {
@@ -46,3 +44,4 @@ function formatString(string $initialString, string $format = 'PascalCase'): str
             throw new InvalidArgumentException('Invalid format specified.');
     }
 }
+
