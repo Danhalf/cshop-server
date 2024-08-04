@@ -2,12 +2,13 @@
 
 namespace app\controllers;
 
-class PageController
+use cvendor\Controller;
+
+class PageController extends Controller
 {
 
-    public function indexAction()
+    public function viewAction()
     {
-        echo 'index';
     }
 
 }

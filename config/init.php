@@ -5,6 +5,7 @@ define("ROOT", dirname(__DIR__));
 define("PUBLIC_PATH", ROOT . '/public');
 define("ERRORS_PATH", PUBLIC_PATH . '/errors');
 define("APP", ROOT . '/app');
+define("VIEWS", APP . '/views');
 define("CORE", ROOT . '/vendor/cvendor');
 define("HELPERS", ROOT . '/vendor/cvendor/helpers');
 define("CACHE", ROOT . '/tmp/cache');

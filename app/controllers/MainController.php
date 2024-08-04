@@ -2,12 +2,13 @@
 
 namespace app\controllers;
 
-class MainController
+use cvendor\Controller;
+
+class MainController extends Controller
 {
 
     public function indexAction()
     {
-        echo __METHOD__;
     }
 
 

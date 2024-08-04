@@ -40,14 +40,19 @@ class Router
     public static function dispatch($url): void
     {
         $url = self::removeQueryString($url);
-        var_dump($url);
         if (self::matchRoute($url)) {
             $controller = 'app\controllers\\' . self::$route[ADMIN_PREFIX] . self::$route[CONTROLLER] . 'Controller';
             if (class_exists($controller)) {
+
+                /** @var Controller $controllerObject */
                 $controllerObject = new $controller(self::$route);
+
+                $controllerObject->getModel();
+
                 $action = self::formatActionName(self::$route[ACTION] . 'Action');
                 if (method_exists($controllerObject, $action)) {
                     $controllerObject->$action();
+                    $controllerObject->getView();
                 } else {
                     throw  new \Exception("Action <b>'{$controller::$action}'</b> not found", 404);
                 }
@@ -89,7 +94,6 @@ class Router
                     $route[ACTION] = self::formatActionName($route[ACTION]);
                 }
                 self::$route = $route;
-                debug($route);
                 return true;
             }
         }
@@ -98,7 +102,7 @@ class Router
 
     protected static function formatControllerName(string $controller): string
     {
-        return formatString($controller);
+        return formatString($controller, '');
     }
 
     protected static function formatActionName(string $action): string
